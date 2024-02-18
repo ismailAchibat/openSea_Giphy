@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
+import { Card, CardBody, CardHeader, Image } from "@chakra-ui/react";
+import GIFCardContainer from "./GIFCardContainer";
+import GIFCard from "./GIFCard";
 
-interface images {
-  url: string;
-  width: string;
-  height: string;
-}
-
-interface GIF {
+export interface GIF {
   id: string;
   title: string;
-  images: images;
+  url: string;
 }
 
 interface FetchGIFResponse {
@@ -28,14 +25,13 @@ const GIFGrid = () => {
       )
       .then((res) => setGIFs(res.data.data))
       .catch((err) => setError(err.message));
-  },[]);
-  return (
-    <ul>
-      {GIFs.map((gif) => (
-        <li key={gif.id}>{gif.title}</li>
-      ))}
-    </ul>
-  );
+  }, []);
+
+  return GIFs.map((gif) => (
+    <GIFCardContainer key={gif.id}>
+      <GIFCard GIF={gif} />
+    </GIFCardContainer>
+  ));
 };
 
 export default GIFGrid;
