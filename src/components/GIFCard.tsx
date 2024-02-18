@@ -7,16 +7,21 @@ interface Props {
 }
 
 const GIFCard = ({ GIF }: Props) => {
-    console.log(GIF.embed_url)
+  console.log(GIF.embed_url);
   return (
     <Card>
-        <CardBody>
-            <iframe src={GIF.embed_url} width="480" height="311" frameBorder="0"
-                    className="giphy-embed" allowFullScreen></iframe>
-            <p><a href="https://giphy.com/gifs/confused-flying-YsTs5ltWtEhnq">via GIPHY</a></p>
+      <CardBody>
+        <iframe
+          src={GIF.embed_url}
+          width="480"
+          height="311"
+          frameBorder="0"
+          className="giphy-embed"
+          allowFullScreen
+        ></iframe>
 
-            <Heading fontSize="lg">{GIF.title}</Heading>
-        </CardBody>
+        <Heading fontSize="lg">{GIF.title}</Heading>
+      </CardBody>
     </Card>
   );
 };

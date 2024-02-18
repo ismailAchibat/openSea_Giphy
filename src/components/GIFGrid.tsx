@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-import { Card, CardBody, CardHeader, Image } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  Image,
+  SimpleGrid,
+} from "@chakra-ui/react";
 import GIFCardContainer from "./GIFCardContainer";
 import GIFCard from "./GIFCard";
 
@@ -8,7 +14,7 @@ export interface GIF {
   id: string;
   title: string;
   url: string;
-  embed_url:string;
+  embed_url: string;
 }
 
 interface FetchGIFResponse {
@@ -26,14 +32,21 @@ const GIFGrid = () => {
       )
       .then((res) => setGIFs(res.data.data))
       .catch((err) => setError(err.message));
-  }, [apiClient,setError,setGIFs]);
+  }, [apiClient, setError, setGIFs]);
 
-
-  return GIFs.map((gif) => (
-    <GIFCardContainer key={gif.id}>
-      <GIFCard GIF={gif} />
-    </GIFCardContainer>
-  ));
+  return (
+    <SimpleGrid
+      columns={{ sm: 1, md: 2, lg: 3, xl: 3 }}
+      padding={10}
+      spacing={3}
+    >
+      {GIFs.map((gif) => (
+        <GIFCardContainer key={gif.id}>
+          <GIFCard GIF={gif} />
+        </GIFCardContainer>
+      ))}
+    </SimpleGrid>
+  );
 };
 
 export default GIFGrid;
