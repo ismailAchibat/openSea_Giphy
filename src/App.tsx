@@ -1,7 +1,6 @@
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar/NavBar";
-import NFTGrid from "./components/NFTGrid";
 import { useEffect } from "react";
 import GIFGrid from "./components/GIFGrid";
 
